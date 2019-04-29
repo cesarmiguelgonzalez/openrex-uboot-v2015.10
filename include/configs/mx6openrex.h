@@ -19,7 +19,13 @@
 #define CONFIG_MXC_UART_BASE	UART1_BASE
 #define CONFIG_CONSOLE_DEV		"ttymxc0"
 #define CONFIG_MMCROOT			"/dev/mmcblk2p2"
-#define PHYS_SDRAM_SIZE		(1u * 1024 * 1024 * 1024)
+/*#define PHYS_SDRAM_SIZE		(1u * 1024 * 1024 * 1024)*/
+#if defined(CONFIG_DDR_SIZE) 
+#define PHYS_SDRAM_SIZE         CONFIG_DDR_SIZE
+#else
+#define PHYS_SDRAM_SIZE         SZ_256M
+#warning "Using default SDRAM size"
+#endif
 
 #define CONFIG_SUPPORT_EMMC_BOOT /* eMMC specific */
 
